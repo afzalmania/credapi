@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-sm-6">
+            <form id="credential-form" onsubmit="storeCredential(event)">
+                <p><b>Store your credentials:</b></p>
+                <p>
+                    <label>login: <input type="text" name="username" class="form-control" required
+                            autocomplete="username"></label>
+                    <label>password: <input type="password" name="password" class="form-control" required
+                            autocomplete="current-password"></label>
+                </p>
+                <p><button type="submit" class="btn btn-default">Store credential</button></p>
+
+                <p class="user-mediation">
+                    <b>User mediation:</b><br />
+                    <label><input type="radio" name="mediation" value="silent"> silent</label>
+                    <label><input type="radio" name="mediation" value="optional" checked> optional</label>
+                    <label><input type="radio" name="mediation" value="required"> required</label>
+                </p>
+                <p><button type="button" onclick="requestCredential()" class="btn btn-default">Request
+                        credential</button></p>
+                <p><button type="button" onclick="preventSilentAccess()" class="btn btn-default">Prevent silent access
+                        (logout)</button></p>
+            </form>
+        </div>
+        <div class="col-sm-6" id="result"></div>
+    </div>
+    <script src="cred_2.js"></script>
+</body>
+
+</html>
