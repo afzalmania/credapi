@@ -31,6 +31,7 @@
                     // Instantiate PasswordCredential with the form
                     if (window.PasswordCredential) {
                         var c = new PasswordCredential(e.target);
+                        console.log("this is console ",c);
                         return navigator.credentials.store(c);
                     } else {
                         return Promise.resolve(profile);
@@ -44,7 +45,7 @@
                 }).catch(error => {
 
                     // Sign in failed
-                    showError('Sign-in Failed');
+                    //showError('Sign-in Failed');
                 });
             });
 
