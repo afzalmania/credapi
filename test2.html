@@ -8,6 +8,7 @@
     <title>Document</title>
     <script>
         var signin = document.querySelector('#signin');
+        console.log(signin);
         signin.addEventListener('click', e => {
             if (window.PasswordCredential || window.FederatedCredential) {
                 navigator.credentials.get({
