@@ -7,47 +7,47 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        if (window.PasswordCredential || window.FederatedCredential) {
- if (!user.isSignedIn()) {
-   navigator.credentials.get({
-     password: true,
-     federated: {
-       providers: [
-         'https://accounts.google.com'
-       ]
-     },
-     mediation: 'silent'
-   }).then(c => {
-     if (c) {
-       switch (c.type) {
-         case 'password':
-           return sendRequest(c);
-           break;
-         case 'federated':
-           return gSignIn(c);
-           break;
-       }
-     } else {
-       return Promise.resolve();
-     }
-   }).then(profile => {
-     if (profile) {
-       updateUI(profile);
-     }
-   }).catch(error => {
-     showError('Sign-in Failed');
-   });
- }
-}else{
-    alert('Hello');
-}
-
+        var signin = document.querySelector('#signin');
+        signin.addEventListener('click', e => {
+            if (window.PasswordCredential || window.FederatedCredential) {
+                navigator.credentials.get({
+                    password: true,
+                    federated: {
+                        providers: [
+                            'https://accounts.google.com'
+                        ]
+                    },
+                    mediation: 'optional'
+                }).then(c => {
+                    if (c) {
+                        switch (c.type) {
+                            case 'password':
+                                return sendRequest(c);
+                                break;
+                            case 'federated':
+                                return gSignIn(c);
+                                break;
+                        }
+                    } else {
+                        return Promise.resolve();
+                    }
+                }).then(profile => {
+                    if (profile) {
+                        updateUI(profile);
+                    } else {
+                        location.href = '/signin';
+                    }
+                }).catch(error => {
+                    location.href = '/signin';
+                });
+            }
+        });
 
     </script>
 </head>
 
 <body>
-
+    <input type="button" id="signin" value="Click"/>
 </body>
 
 </html>
