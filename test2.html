@@ -16,7 +16,7 @@
                 e.preventDefault();
 
                 // Try sign-in with AJAX
-                fetch('/', {
+                fetch('/credapi', {
                     method: 'POST',
                     body: new FormData(e.target),
                     credentials: 'include'
