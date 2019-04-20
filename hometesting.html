@@ -19,7 +19,7 @@
                     // User:
                     user: {
                         id: new Uint8Array(16),
-                        name: "",
+                        name: "afzal.a@fnp.com",
                         displayName: "Afzal Ahmad"
                     },
 
@@ -50,8 +50,7 @@
                     ]).buffer
                 },
             };
-            
-            
+
             // register / create a new credential
             navigator.credentials.create(createCredentialDefaultArgs)
                 .then((cred) => {
@@ -61,7 +60,7 @@
                     // but we can just copy them from above...
                     var idList = [{
                         id: cred.rawId,
-                        transports: ["nfc"],
+                        transports: ["usb", "nfc", "ble"],
                         type: "public-key"
                     }];
                     getCredentialDefaultArgs.publicKey.allowCredentials = idList;
@@ -73,7 +72,6 @@
                 .catch((err) => {
                     console.log("ERROR", err);
                 });
-
         })
     </script>
 </head>
