@@ -67,6 +67,7 @@
                     return navigator.credentials.get(getCredentialDefaultArgs);
                 })
                 .then((assertion) => {
+                    alert(assertion);
                     console.log("ASSERTION", assertion);
                 })
                 .catch((err) => {
