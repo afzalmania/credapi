@@ -69,7 +69,7 @@
                         }];
                         getCredentialDefaultArgs.publicKey.allowCredentials = idList;
                         console.log('testing ',createCredentialDefaultArgs);
-                        //return navigator.credentials.get(getCredentialDefaultArgs);
+                        return navigator.credentials.get(getCredentialDefaultArgs);
                     })
                     .then((assertion) => {
                         console.log("ASSERTION", assertion);
