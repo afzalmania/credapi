@@ -71,7 +71,14 @@
                         return navigator.credentials.get(getCredentialDefaultArgs);
                     })
                     .then((assertion) => {
+                        var json = publicKeyCredentialToJSON(assertion);
                         console.log("ASSERTION", assertion);
+                        // Send data to relying party's servers
+                        post("/webauthn/register", {
+                            state: "",
+                            provider: "",
+                            res: JSON.stringify(json)
+                        });
                     })
                     .catch((err) => {
                         console.log("ERROR", err);
