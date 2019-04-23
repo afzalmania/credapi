@@ -64,7 +64,7 @@
                         // but we can just copy them from above...
                         var idList = [{
                             id: cred.rawId,
-                            
+                            transports: ["usb", "nfc", "ble"],
                             type: "public-key"
                         }];
                         getCredentialDefaultArgs.publicKey.allowCredentials = idList;
