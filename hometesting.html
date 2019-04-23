@@ -71,14 +71,7 @@
                         return navigator.credentials.get(getCredentialDefaultArgs);
                     })
                     .then((assertion) => {
-                       
                         console.log("ASSERTION", assertion);
-                        // Send data to relying party's servers
-                        post("/webauthn/register", {
-                            state: "",
-                            provider: "",
-                            
-                        });
                     })
                     .catch((err) => {
                         console.log("ERROR", err);
