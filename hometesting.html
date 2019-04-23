@@ -68,6 +68,7 @@
                             type: "public-key"
                         }];
                         getCredentialDefaultArgs.publicKey.allowCredentials = idList;
+                        console.log('testing ',createCredentialDefaultArgs);
                         return navigator.credentials.get(getCredentialDefaultArgs);
                     })
                     .then((assertion) => {
@@ -86,7 +87,10 @@
         UserName <input type="text" name="username" /><br />
         DisplayName <input type="text" name="displayName" /><br />
         Password <input type="password" name="password" /><br />
-        <input type="submit" name="Register" /><br />
+        <input type="submit" name="Register" value="Register"/><br />
+    </form>
+    <form id="login" method="post">
+        <input type="submit" name="Login" value="Login"/><br />
     </form>
 </body>
 
