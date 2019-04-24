@@ -61,8 +61,8 @@ const createCreds = async function() {
         
 }
 
-const validateCreds = async function(){
-    
+const validateCreds = function(){
+    console.log('afzal');
     ////// START server generated info //////
     // Usually the below publicKey object is constructed on your server
     // here for DEMO purposes only
