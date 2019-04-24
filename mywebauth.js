@@ -83,10 +83,6 @@ const validateCreds = async function(){
     };
     ////// END server generated info //////
 
-    // browser receives the publicKey object and passes it to WebAuthn "get" API
-    const res = await navigator.credentials.get({
-        publicKey: publicKey
-      })
 
     
     console.log(res);
