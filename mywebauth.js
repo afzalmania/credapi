@@ -85,7 +85,7 @@ const validateCreds = async function(){
 
 
     
-    console.log(res);
+    
 
    
 }
