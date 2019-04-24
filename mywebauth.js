@@ -75,7 +75,8 @@ const validateCreds = function(){
         challenge: enc.encode(AUTH_CHALLENGE),
         allowCredentials: [{
           id: strToBin(rawId),
-          type: 'public-key'
+          type: 'public-key',
+          transports: ["usb", "nfc", "ble"],
         }],
         authenticatorSelection: { 
             userVerification: "preferred" 
