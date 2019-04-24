@@ -61,6 +61,37 @@ const createCreds = async function() {
         
 }
 
+const validateCreds = async function(){
+    
+    ////// START server generated info //////
+    // Usually the below publicKey object is constructed on your server
+    // here for DEMO purposes only
+    const rawId = localStorage.getItem('rawId');
+    const AUTH_CHALLENGE = 'someRandomString';
+    const publicKey = {
+        // your domain
+        rpId: "92587ba8.ngrok.io",
+        // random, cryptographically secure, at least 16 bytes
+        challenge: enc.encode(AUTH_CHALLENGE),
+        allowCredentials: [{
+          id: strToBin(rawId),
+          type: 'public-key'
+        }],
+        authenticatorSelection: { 
+            userVerification: "preferred" 
+          },
+    };
+    ////// END server generated info //////
 
+    // browser receives the publicKey object and passes it to WebAuthn "get" API
+    const res = await navigator.credentials.get({
+        publicKey: publicKey
+      })
+
+    
+    console.log(res);
+
+   
+}
 
 ///////// END WEBAUTHN FUNCTIONS /////////
