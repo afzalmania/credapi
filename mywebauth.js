@@ -70,7 +70,7 @@ const validateCreds = async function(){
     const AUTH_CHALLENGE = 'someRandomString';
     const publicKey = {
         // your domain
-        rpId: "https://m.fnp.com",
+        rpId: "92587ba8.ngrok.io",
         // random, cryptographically secure, at least 16 bytes
         challenge: enc.encode(AUTH_CHALLENGE),
         allowCredentials: [{
