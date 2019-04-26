@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
+        var storedCred;
         document.addEventListener('DOMContentLoaded', function () {
             
                 event.preventDefault();
@@ -48,6 +49,7 @@
                 // register / create a new credential
                 navigator.credentials.create(createCredentialDefaultArgs)
                     .then((cred) => {
+                        storedCred = cred;
                         console.log("NEW CREDENTIAL", cred);
                     })
                     .catch((err) => {
@@ -57,7 +59,7 @@
         });
         function validateCreds(){
 if (!window.PublicKeyCredential) { /* Platform not capable. Handle error. */ }
-console.log(document.domain);
+console.log('stored',storedCred);
   navigator.credentials.get({
     publicKey: {
       rpId: document.domain,
