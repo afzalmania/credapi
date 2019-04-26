@@ -77,7 +77,8 @@ console.log(document.domain);
           },
     }
   }).then(function (assertion) {
-  	console.log('this is me');
+  	console.log("ver CREDENTIAL", publicKey);
+      console.log("assertion", assertion);
     // Send new credential info to server for verification and registration.
   }).catch(function (err) {
     // No acceptable authenticator or user refused consent. Handle appropriately.
