@@ -90,11 +90,11 @@ console.log(document.domain);
 </head>
 
 <body>
-    <form id="register" onsubmit="validateCreds()">
+    <form id="register">
         UserName <input type="text" name="username" /><br />
         DisplayName <input type="text" name="displayName" /><br />
         Password <input type="password" name="password" /><br />
-        <input type="submit" name="Register" /><br />
+        <input type="button" name="Register" onclick="validateCreds()"/><br />
     </form>
 </body>
 
