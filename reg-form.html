@@ -71,7 +71,10 @@ console.log(document.domain);
           id: new Uint8Array(16), // The credential_id may be provided by the server
         }
       ],
-      timeout: 60000
+      timeout: 60000,
+        authenticatorSelection: { 
+            userVerification: "preferred" 
+          },
     }
   }).then(function (assertion) {
   	console.log('this is me');
