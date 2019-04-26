@@ -70,7 +70,7 @@ console.log('stored',storedCred);
       allowCredentials: [
         {
           type: 'public-key',
-          id: 'AXZA0GXTtT7i8posgsvTPxJNNu9zwt3pQir5OTOO8U0EDLDF5vT8jfK4LHepurod6LEE0UZKmLsBRegF8YRVwc4', // The credential_id may be provided by the server
+          id: storedCred.id, // The credential_id may be provided by the server
         }
       ],
       timeout: 60000,
