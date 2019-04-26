@@ -6,11 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="registration.js"></script>
+    <script>
+        function validateCreds(){
+if (!window.PublicKeyCredential) { /* Platform not capable. Handle error. */ }
+console.log(document.domain);
+  navigator.credentials.get({
+    publicKey: {
+      rpId: document.domain,
+      challenge: new Uint8Array([ // must be a cryptographically random number sent from a server
+                        0x6A, 0x94, 0xB3, 0x92, 0xE2, 0x52, 0xFA, 0x1A, 0x8D, 0x07, 0x14, 0x1E, 0xAB, 0xA8, 0x28, 0xE7,
+                        0xC3, 0x2C, 0x37, 0xF2, 0x2E, 0x1E, 0x12, 0x53, 0xA9, 0x05, 0x8C, 0x36, 0x10, 0x7C, 0x2B, 0x09
+                        ]).buffer, // The challenge must be produced by the server
+      allowCredentials: [
+        {
+          type: 'public-key',
+          id: new Uint8Array(16), // The credential_id may be provided by the server
+          transports: ["usb", "nfc", "ble"],
+        }
+      ],
+      timeout: 60000
+    }
+  }).then(function (assertion) {
+  	console.log('this is me');
+    // Send new credential info to server for verification and registration.
+  }).catch(function (err) {
+    // No acceptable authenticator or user refused consent. Handle appropriately.
+    console.log('no there is an error');
+  });
+
+}
+    </script>
 </head>
 
 <body>
-    <form id="register">
+    <form id="register" onsubmit="validateCreds()">
         UserName <input type="text" name="username" /><br />
         DisplayName <input type="text" name="displayName" /><br />
         Password <input type="password" name="password" /><br />
