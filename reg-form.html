@@ -8,6 +8,7 @@
     <title>Document</title>
     <script>
         var storedCred;
+        var test = new Uint8Array(16);
         document.addEventListener('DOMContentLoaded', function () {
             
                 event.preventDefault();
@@ -23,7 +24,7 @@
 
                         // User:
                         user: {
-                            id: new Uint8Array(16),
+                            id: test,
                             name: username,
                             displayName: displayName
                         },
@@ -70,7 +71,7 @@ console.log('stored',storedCred);
       allowCredentials: [
         {
           type: 'public-key',
-          id:  new Uint8Array(16), // The credential_id may be provided by the server
+          id:  test, // The credential_id may be provided by the server
         }
       ],
       timeout: 60000,
@@ -96,7 +97,7 @@ console.log('stored',storedCred);
         UserName <input type="text" name="username" /><br />
         DisplayName <input type="text" name="displayName" /><br />
         Password <input type="password" name="password" /><br />
-        <input type="button" name="Register" onclick="validateCreds()" value="SS"/><br />
+        <input type="button" name="Register" onclick="validateCreds()" value="Afzal"/><br />
     </form>
 </body>
 
