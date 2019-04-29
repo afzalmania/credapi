@@ -17,7 +17,7 @@
                 
                 const publicKeyCredentialCreationOptions = {
                         challenge: Uint8Array.from(
-                            randomStringFromServer, c => c.charCodeAt(0)),
+                            'randomStringFromServer', c => c.charCodeAt(0)),
                         rp: {
                             name: "FNP",
                             id: document.domain,
