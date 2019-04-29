@@ -16,8 +16,10 @@
                 e.preventDefault();
                 
                 const publicKeyCredentialCreationOptions = {
-                        challenge: Uint8Array.from(
-                            'randomStringFromServer', c => c.charCodeAt(0)),
+                        challenge: new Uint8Array([ // must be a cryptographically random number sent from a server
+                        0x6A, 0x94, 0xB3, 0x92, 0xE2, 0x52, 0xFA, 0x1A, 0x8D, 0x07, 0x14, 0x1E, 0xAB, 0xA8, 0x28, 0xE7,
+                        0xC3, 0x2C, 0x37, 0xF2, 0x2E, 0x1E, 0x12, 0x53, 0xA9, 0x05, 0x8C, 0x36, 0x10, 0x7C, 0x2B, 0x09
+                        ]).buffer,
                         rp: {
                             name: "FNP",
                             id: document.domain,
