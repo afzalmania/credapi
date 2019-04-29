@@ -14,39 +14,33 @@
 
                 // Stop submitting form by itself
                 e.preventDefault();
+                
+                const publicKeyCredentialCreationOptions = {
+                        challenge: Uint8Array.from(
+                            randomStringFromServer, c => c.charCodeAt(0)),
+                        rp: {
+                            name: "FNP",
+                            id: document.domain,
+                        },
+                        user: {
+                            id: Uint8Array.from(
+                                "UZSL85T9AFC", c => c.charCodeAt(0)),
+                            name: "afzal@fnp.com",
+                            displayName: "afzal",
+                        },
+                        pubKeyCredParams: [{alg: -7, type: "public-key"}],
+                        authenticatorSelection: {
+                            authenticatorAttachment: "cross-platform",
+                        },
+                        timeout: 60000,
+                        attestation: "direct"
+                    };
 
-                // Try sign-in with AJAX
-                fetch('/credapi/test.js', {
-                    method: 'POST',
-                    body: new FormData(e.target),
-                    credentials: 'include'
-                }).then(res => {
-                    if (res.status == 200) {
-                        return Promise.resolve();
-                    } else {
-                        return Promise.reject('Sign in failed');
-                    }
-                }).then(profile => {
-
-                    // Instantiate PasswordCredential with the form
-                    if (window.PasswordCredential) {
-                        var c = new PasswordCredential(e.target);
-                        console.log("this is console ",c);
-                        return navigator.credentials.store(c);
-                    } else {
-                        return Promise.resolve(profile);
-                    }
-                }).then(profile => {
-
-                    // Successful sign in
-                    if (profile) {
-                        updateUI(profile);
-                    }
-                }).catch(error => {
-
-                    // Sign in failed
-                    //showError('Sign-in Failed');
-                });
+                    const credential = await navigator.credentials.create({
+                        publicKey: publicKeyCredentialCreationOptions
+                    });
+                console.log('afzal',credential);
+                
             });
 
         }
